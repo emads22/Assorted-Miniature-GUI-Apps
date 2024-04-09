@@ -1,10 +1,9 @@
-# Note: This script runs only on a local IDE with "streamlit run main.py"
+# Note: This script runs only on a local IDE with "streamlit run webcam_app.py"
 
 import streamlit as st
 from PIL import Image
 
 
-# Function to convert image to grayscale
 def convert_to_grayscale(image):
     """
     Convert the provided image to grayscale.
@@ -23,7 +22,6 @@ def convert_to_grayscale(image):
     return grayscale_image
 
 
-# Function to display original and grayscale images
 def display_images(original_img, grayscale_img):
     """
     Display the original and grayscale images side by side.
@@ -43,7 +41,6 @@ def display_images(original_img, grayscale_img):
         st.image(grayscale_img, use_column_width=True)
 
 
-# Function to capture image from webcam
 def capture_image():
     """
     Logic for capturing image from webcam and converting it to grayscale.
@@ -59,7 +56,6 @@ def capture_image():
             display_images(original_image, grayscale_image)
 
 
-# Function to upload image
 def upload_image():
     """
     Logic for browsing image, converting it to grayscale, and displaying.
@@ -73,7 +69,6 @@ def upload_image():
         display_images(original_image, grayscale_image)
 
 
-# Main function
 def main():
     # Set the title of the app and format it to be in the center
     st.markdown("<h1 style='text-align: center;'>Grayscale Image Converter</h1>",
@@ -82,16 +77,34 @@ def main():
     # Create buttons for capturing and browsing images
     _, col1, col2, _ = st.columns(4)
     with col1:
-        capture_button = st.button("Capture Image")
-    with col2:
         browse_button = st.button("Browse Image")
+    with col2:
+        capture_button = st.button("Capture Image")
 
-    # If the capture button is clicked, call the capture_image function
-    if capture_button:
+    if "upload_btn_state" not in st.session_state:
+        # If not present in the session state, initialize 'upload_btn_state' to False
+        st.session_state['upload_btn_state'] = False
+
+    if "capture_btn_state" not in st.session_state:
+        # If not present in the session state, initialize 'capture_btn_state' to False
+        st.session_state['capture_btn_state'] = False
+
+    # Check if the "Capture Image" button is clicked or its session state is True
+    if capture_button or st.session_state.capture_btn_state:
+        # Set the session state variable capture_btn_state to True
+        st.session_state.capture_btn_state = True
+        # Set the session state variable upload_btn_state to False
+        st.session_state.upload_btn_state = False
+        # Call the capture_image function to handle capturing an image
         capture_image()
 
-    # If the browse button is clicked, call the upload_image function
-    if browse_button:
+    # Check if the "Browse Image" button is clicked or its session state is True
+    if browse_button or st.session_state.upload_btn_state:
+        # Set the session state variable upload_btn_state to True
+        st.session_state.upload_btn_state = True
+        # Set the session state variable capture_btn_state to False
+        st.session_state.capture_btn_state = False
+        # Call the upload_image function to handle browsing and uploading an image
         upload_image()
 
 

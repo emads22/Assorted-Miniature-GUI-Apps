@@ -1,0 +1,91 @@
+
+1. Understanding Streamlit and Session State
+    
+    Streamlit is a popular Python library used for building interactive web applications. 
+    It's particularly well-suited for data scientists and machine learning engineers due to its simplicity and ease of use.
+
+    In Streamlit, session state refers to the persistent state of our application across different user interactions. 
+    Normally, when a user interacts with a Streamlit app, the entire script reruns with each interaction. 
+    However, session state allows us to preserve certain variables between interactions, ensuring a smoother user experience.
+
+2. Problem: Preserving Button State
+
+    One common problem in Streamlit is preserving the state of buttons. 
+    When a user clicks a button, the page reruns, causing any user input to disappear. 
+    This is because Streamlit reloads the entire script, including any user inputs, with each interaction.
+
+3. Solution: Using Session State for Button State
+
+    To solve this problem, we can use session state to preserve the state of our buttons across interactions. 
+    Here's how it works:
+
+        . Initialization: 
+            We first initialize our session state variables to False. 
+            This ensures that when the app starts, neither button is considered clicked.
+
+        . Button Click Handling: 
+            We then check whether the button has been clicked or its session state is True. 
+            If so, we update the session state variable accordingly and perform the associated action.
+
+4. Implementing the Solution: Step by Step
+
+    Let's go through the code snippet from "webcam_app.py":
+
+        . Initialization:
+
+            -   if "upload_btn_state" not in st.session_state:
+                    st.session_state['upload_btn_state'] = False
+
+                if "capture_btn_state" not in st.session_state:
+                    st.session_state['capture_btn_state'] = False
+            
+            Here, we're initializing two session state variables: upload_btn_state and capture_btn_state. 
+            We set their initial values to False, indicating that neither button has been clicked yet.
+
+        . Button Click Handling:
+
+            -   if capture_button or st.session_state.capture_btn_state:
+                    st.session_state.capture_btn_state = True
+                    st.session_state.upload_btn_state = False
+                    capture_image()
+
+                if browse_button or st.session_state.upload_btn_state:
+                    st.session_state.upload_btn_state = True
+                    st.session_state.capture_btn_state = False
+                    upload_image()
+        
+            In these blocks of code, we're checking whether the "Capture Image" or "Browse Image" buttons have been clicked or if their session state is True. If so, we update the session state variables accordingly and call the corresponding functions (capture_image() or upload_image()).
+
+5. Conclusion
+
+    Using session state to preserve button state is a powerful technique in Streamlit for creating interactive web applications. 
+    By maintaining the state of buttons across interactions, we can provide a smoother and more intuitive user experience.
+
+
+
+NOTE:
+
+    Setting the session state variable to True doesn't directly prevent the rerun of the webpage in Streamlit. 
+    Instead, it allows us to maintain the state of the button across page reruns.
+
+    Here's how it works:
+
+    1.Initial State:     
+        When the page first loads, the session state variables are initialized to False, indicating that neither button has been clicked.
+
+    2.Button Clicked:     
+        When a button is clicked, its corresponding session state variable is set to True. This change in state is stored by Streamlit's session management mechanism.
+
+    3.Page Rerun: 
+        Despite the page rerunning after a button click, the session state is preserved. This means that even though the script starts from the top again, the session state variables retain their values from the previous interaction.
+
+    4.Conditional Check:     
+        When the script runs again, it checks the session state variables to determine if a button has been clicked. If a button's session state is True, it means the button was clicked in a previous interaction.
+
+    5.Associated Action: 
+        If the session state variable indicates that a button was clicked, the associated action (such as calling a function) is performed. Since the session state variable is preserved across reruns, the action associated with the button click is executed without the need for the user to click the button again.
+
+    So, setting the session state variable to True doesn't directly prevent the rerun of the webpage, but it allows us to maintain the state of the button and trigger associated actions across page reruns, providing a smoother user experience.
+
+
+Reference: "https://stackoverflow.com/questions/74518601/st-file-uploader-returns-none", Jamiu S. answer.
