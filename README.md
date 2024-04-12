@@ -1,49 +1,44 @@
 # Assorted Miniature GUI Apps
 
-This repository contains a collection of four small-scale graphical user interface (GUI) applications developed using PyQT6 and Streamlit as part of the "Assorted Miniature GUI Apps" project.
+## Overview
+Assorted Miniature GUI Apps is a collection of four small-scale graphical user interface (GUI) applications developed using PyQT6 and Streamlit. These apps serve various purposes, including file compression, archive extraction, measurement conversion, and webcam image capture with grayscale conversion.
 
-## Applications Included:
+## Features
+- **File Compressor**: This application compresses files and folders into a single ZIP archive, featuring a fast and efficient compression algorithm.
+- **Archive Extractor**: Designed to extract files and folders from ZIP archives, this app offers a simple interface for easy extraction.
+- **Meter Converter**: Users can convert measurements between feet (inches) and meters using this app, which features a simple and intuitive user interface.
+- **Webcam App**: Enables users to capture images using their webcam. It provides options to capture pictures and convert them to grayscale automatically, as well as browse for existing images on the device and convert them to grayscale.
 
-1. **File Compressor**
-   - Description: This application provides users with the ability to compress files and folders into a single compressed archive.
-   - Features:
-     - Compression of files and folders into ZIP archive format.
-     - Fast and efficient compression algorithm.
+## Setup
+1. Clone the repository.
+2. Ensure Python 3.x is installed.
+3. Navigate to each app directory and run the following command in your terminal or command prompt to install the required dependencies:
 
-2. **Archive Extractor**
-   - Description: An application designed to extract files and folders from compressed archives.
-   - Features:
-     - Extraction of files from ZIP archive formats.
-     - Simple interface for easy extraction.
+   ```
+   pip install -r requirements.txt
+   ```
 
-3. **Meter Converter**
-   - Description: This application allows users to convert measurements between feet (inches) and meters.
-   - Features:
-     - Conversion between feet (inches) and meters.
-     - Simple and intuitive user interface.
+4. Each application includes both a Python script (`.py` file) and an executable file (`.exe`). You can run the application by either:
+   - Executing the Python script directly using the command:
+     ```
+     python <script-name>.py
+     ```
+     Replace `<script-name>` with the actual name of the Python script file.
+   - Running the executable file by double-clicking on it or executing it from the terminal/command prompt.
 
-4. **Webcam App**
-   - Description: This application enables users to capture images using their webcam. It provides two main functionalities:
-     1. Capture Pic: Users can capture a picture using their webcam, and the application will automatically convert it to grayscale and display the result.
-     2. Browse and Convert: Users can also browse for an existing picture on their device. The application will then convert the selected image to grayscale and display it on the webpage.
-
-   - Features:
-     - Image capture functionality.
-     - Automatic conversion of captured and selected images to grayscale.
-     - Option to capture images using the webcam or select images from the device.
-
-## Installation and Usage:
+## Usage
 - Each application can be run independently by executing its respective executable file.
 
-## Contributing:
-- Contributions to enhance existing applications or add new ones are welcome. Please fork the repository, make your changes, and submit a pull request.
+## Contributing
+Contributions are welcome! Here are some ways you can contribute to the project:
+- Report bugs and issues
+- Suggest new features or improvements
+- Submit pull requests with bug fixes or enhancements
 
-## License:
-- This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
-
-## Project Author
+## Author
 - Emad &nbsp; E>
   
   [<img src="https://img.shields.io/badge/GitHub-Profile-blue?logo=github" width="150">](https://github.com/emads22)
 
-  
+## License
+This project is licensed under the [MIT License](LICENSE).
