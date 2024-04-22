@@ -25,6 +25,7 @@ Assorted Miniature GUI Apps is a collection of four small-scale graphical user i
      ```
      Replace `<script-name>` with the actual name of the Python script file.
    - Running the executable file by double-clicking on it or executing it from the terminal/command prompt.
+   - For the webcam app, execute the command `streamlit run webcam_app.py` in the terminal.
 
 ## Usage
 - Each application can be run independently by executing its respective executable file.
